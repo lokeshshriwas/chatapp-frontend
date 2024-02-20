@@ -25,15 +25,15 @@ const ProfileModal = ({ user, children }) => {
       ) : (
         <IconButton
           display={{ base: "flex" }}
+          bg={"#403f3e"} color={"white"}
           icon={<ViewIcon />}
           onClick={onOpen}
         />
       )}
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent h={"410px"}>
           <ModalHeader
-            fontFamily={"Work sans"}
             display={"flex"}
             fontSize={"40px"}
             justifyContent={"center"}
@@ -42,7 +42,6 @@ const ProfileModal = ({ user, children }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody
-            fontFamily={"Work sans"}
             display={"flex"}
             flexDir={"column"}
             justifyContent={"space-between"}
