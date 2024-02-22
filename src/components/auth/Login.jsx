@@ -57,8 +57,8 @@ const Login =  () => {
 
       localStorage.setItem("userInfo", JSON.stringify(data))
       setLoading(false)
-      navigate("/chats")
       navigate(0)
+      navigate("/chats")
     } catch (error) {
       toast({
         title: 'Error Occured',
