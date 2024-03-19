@@ -4,7 +4,6 @@ import authIcons from "./icons/authIcons";
 import { Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
 
-
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -16,7 +15,7 @@ const Signup = () => {
   const [showConf, setShowConf] = useState(false);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleShow = (e) => {
     e.preventDefault();
@@ -115,31 +114,33 @@ const Signup = () => {
         config
       );
       toast({
-        title: 'Register successfull',
+        title: "Register successfull",
         position: "bottom",
-        status: 'success',
+        status: "success",
         duration: 5000,
         isClosable: true,
-      })
+      });
 
-      localStorage.setItem("userInfo", JSON.stringify(data))
-      setLoading(false)
-      navigate("/chats")
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      navigate("/chats");
     } catch (error) {
       toast({
-        title: 'Error Occured',
+        title: "Error Occured",
         description: error.response.data.message,
         position: "bottom",
-        status: 'error',
+        status: "error",
         duration: 5000,
         isClosable: true,
-      })
-      setLoading(false)
+      });
+      setLoading(false);
     }
   };
 
   return (
-    <div className={`min-h-screen  flex flex-col justify-start py-4 sm:px-6 lg:px-8 bg-[url('https://wallpapercave.com/wp/wp6988787.png')]`}>
+    <div
+      className={`min-h-screen  flex flex-col justify-start py-4 sm:px-6 lg:px-8 bg-[url('https://wallpapercave.com/wp/wp6988787.png')]`}
+    >
       <div className="sm:mx-auto sm:w-full sm:max-w-md bg-black bg-opacity-60 pb-2 rounded-2xl">
         <h2 className="mt-2 text-center text-3xl leading-9 font-extrabold text-white">
           Create a new account

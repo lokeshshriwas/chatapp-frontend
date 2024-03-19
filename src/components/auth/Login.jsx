@@ -3,28 +3,27 @@ import { Link, useNavigate } from "react-router-dom";
 import authIcons from "./icons/authIcons";
 import { Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
-import {  ChatState } from "../../Context/Chatprovider";
+import { ChatState } from "../../Context/Chatprovider";
 
-const Login =  () => {
-  const navigate = useNavigate()
-  const {user} = ChatState()
-  if(user) navigate("/chats")
+const Login = () => {
+  const navigate = useNavigate();
+  const { user } = ChatState();
+  if (user) navigate("/chats");
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [show, setShow] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
 
-
-  const handleShow = (e)=>{
-    e.preventDefault()
-    setShow(!show)
-  }
+  const handleShow = (e) => {
+    e.preventDefault();
+    setShow(!show);
+  };
 
   const handleSubmit = async () => {
-    setLoading(true)
-    if(!email || !password){
+    setLoading(true);
+    if (!email || !password) {
       toast({
         title: "Please Enter Details",
         position: "bottom",
@@ -32,7 +31,7 @@ const Login =  () => {
         duration: 5000,
         isClosable: true,
       });
-      setLoading(false)
+      setLoading(false);
       return;
     }
 
@@ -48,30 +47,30 @@ const Login =  () => {
         config
       );
       toast({
-        title: 'Login successfull',
+        title: "Login successfull",
         position: "bottom",
-        status: 'success',
+        status: "success",
         duration: 5000,
         isClosable: true,
-      })
+      });
 
-      localStorage.setItem("userInfo", JSON.stringify(data))
-      setLoading(false)
-      navigate(0)
-      navigate("/chats")
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      navigate(0);
+      navigate("/chats");
     } catch (error) {
       toast({
-        title: 'Error Occured',
+        title: "Error Occured",
         description: error.response.data.message,
         position: "bottom",
-        status: 'error',
+        status: "error",
         duration: 5000,
         isClosable: true,
-      })
-      setLoading(false)
+      });
+      setLoading(false);
     }
-  }
-  
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6 bg-[url('https://wallpapercave.com/wp/wp6988787.png')]">
       <div className="sm:mx-auto sm:w-full sm:max-w-md bg-black bg-opacity-60 pb-2 rounded-2xl">
@@ -107,7 +106,7 @@ const Login =  () => {
                   required
                   value={email}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                  onChange={(e)=> setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <div className="hidden absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                   <svg
@@ -135,13 +134,18 @@ const Login =  () => {
               <div className="mt-1 rounded-md shadow-sm relative">
                 <input
                   id="password"
-                  type={show? "text" : "password"}
+                  type={show ? "text" : "password"}
                   required
                   value={password}
-                  onChange={(e)=> setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 "
                 />
-              <button className="absolute top-2 mt-1 right-3" onClick={(e)=>handleShow(e)}>{show? (authIcons.show ): (authIcons.hide) }</button>
+                <button
+                  className="absolute top-2 mt-1 right-3"
+                  onClick={(e) => handleShow(e)}
+                >
+                  {show ? authIcons.show : authIcons.hide}
+                </button>
               </div>
             </div>
 
