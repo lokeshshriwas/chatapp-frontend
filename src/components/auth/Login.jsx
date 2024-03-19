@@ -73,7 +73,7 @@ const Login =  () => {
   }
   
   return (
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6 bg-[url('https://cdn2.f-cdn.com/contestentries/2046262/58571795/61f00c583e000_thumb900.jpg')]">
+    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6 bg-[url('https://wallpapercave.com/wp/wp6988787.png')]">
       <div className="sm:mx-auto sm:w-full sm:max-w-md bg-black bg-opacity-60 pb-2 rounded-2xl">
         <h2 className="mt-4 text-center text-3xl leading-9 font-extrabold text-white">
           Sign in to your account
