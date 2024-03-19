@@ -25,9 +25,10 @@ const ProfileModal = ({ user, children }) => {
       ) : (
         <IconButton
           display={{ base: "flex" }}
-          bg={"#403f3e"} color={"white"}
+          bg={"#111B21"} color={"white"}
           icon={<ViewIcon />}
           onClick={onOpen}
+          _hover={{bg: "#222E35"}}
         />
       )}
       <Modal isOpen={isOpen} onClose={onClose} isCentered>

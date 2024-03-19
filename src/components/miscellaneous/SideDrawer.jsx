@@ -123,7 +123,7 @@ const SideDrawer = () => {
         boxSizing="border-box"
         justifyContent="space-between"
         alignItems="center"
-        bg="#1a1812"
+        bg="#222E35"
         w="100%"
         p="5px 10px 5px 10px "
         borderWidth="0px"
@@ -132,7 +132,7 @@ const SideDrawer = () => {
           <Button
             variant="ghost"
             onClick={onOpen}
-            _hover={{ background: "#292721" }}
+            _hover={{ background: "#111B21" }}
           >
             {chatIcons.search}
             <Text
@@ -144,9 +144,6 @@ const SideDrawer = () => {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize={"2xl"} fontFamily={"Work-sans"} textColor={"#fff"}>
-          Chat-App
-        </Text>
         <div className="flex items-center">
           <Menu>
             <MenuButton p={1} position={"relative"}>
@@ -185,7 +182,7 @@ const SideDrawer = () => {
               rightIcon={<ChevronDownIcon />}
               bg="none"
               textColor={"#595757"}
-              _hover={{ background: "#292721" }}
+              _hover={{ background: "#111B21" }}
             >
               <Avatar
                 size="sm"
@@ -194,11 +191,11 @@ const SideDrawer = () => {
                 src={user.pic}
               />
             </MenuButton>
-            <MenuList bg={"#1a1812"} textColor={"white"}>
+            <MenuList bg={"#111B21"} textColor={"white"}>
               <ProfileModal user={user}>
-                <MenuItem bg={"#1a1812"}>My Profile</MenuItem>
+                <MenuItem bg={"#111B21"} _hover={"#111B21"}>My Profile</MenuItem>
               </ProfileModal>
-              <MenuItem bg={"#1a1812"} onClick={handleLogout}>
+              <MenuItem bg={"#111B21"} _hover={"#111B21"} onClick={handleLogout}>
                 Logout
               </MenuItem>
             </MenuList>
@@ -208,7 +205,7 @@ const SideDrawer = () => {
 
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent bg={"#1a1812"}>
+        <DrawerContent bg={"#111B21"}>
           <DrawerHeader borderBottomWidth={"1px"} textColor={"white"}>
             Search Users
           </DrawerHeader>

@@ -46,7 +46,7 @@ const MyChats = ({fetchAgain}) => {
       flexDir={"column"}
       alignItems={"center"}
       p={3}
-      bg={"#1a1812"}
+      bg={"#111B21"}
       textColor={"white"}
       w={{ base: "100%", md: "31%" }}
       borderRadius={"lg"}
@@ -59,27 +59,26 @@ const MyChats = ({fetchAgain}) => {
         fontFamily="Work sans"
         display={"flex"}
         w={"100%"}
-        justifyContent={"space-between"}
+        justifyContent={"flex-end"}
         alignItems={"center"}
       >
-        My Chats
         <GroupChatModal>
           <Button
             display={"flex"}
-            bg={"#26241e"}
+            bg={"#222E35"}
             textColor={"white"}
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            _hover={{ background: "#a1801d" }}
+            _hover={{ background: "#111B21" }}
             rightIcon={<AddIcon />}
           >
-            New Group Chat
+            Create new group
           </Button>
         </GroupChatModal>
       </Box>
       <Box
         display={"flex"}
         flexDir={"column"}
-        bg={"#1a1812"}
+        bg={"#111B21"}
         w="100%"
         h="100%"
         borderRadius={"lg"}
@@ -91,12 +90,12 @@ const MyChats = ({fetchAgain}) => {
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor={"pointer"}
-                bg={selectedChat === chat ? "#a1801d" : "#26241e"}
+                bg={selectedChat === chat ? "#222E35" : "#111B21"}
                 color="white"
                 fontWeight={selectedChat === chat && "bold"}
                 px={3}
                 py={2}
-                borderRadius={"lg"}
+                borderBottom={"1px solid #222E35"}
                 key={chat._id}
               >
                 <Text>

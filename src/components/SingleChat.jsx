@@ -1,5 +1,6 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/Chatprovider";
+import { RiChatSmile3Line } from "react-icons/ri";
 import {
   Box,
   FormControl,
@@ -24,7 +25,8 @@ const ENDPOINT = import.meta.env.VITE_BASEURL;
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
-  const { user, selectedChat, setSelectedChat, notification, setNotification } = ChatState();
+  const { user, selectedChat, setSelectedChat, notification, setNotification } =
+    ChatState();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState();
@@ -125,18 +127,18 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     socket.on("message recieved", (newMessageRecieved) => {
       if (
         !selectedChatCompare ||
-        selectedChatCompare._id !== newMessageRecieved.chat._id 
+        selectedChatCompare._id !== newMessageRecieved.chat._id
       ) {
-         if(!notification.includes(newMessageRecieved)){
-          setNotification([newMessageRecieved, ...notification])
-          setFetchAgain(!fetchAgain)
-         }
+        if (!notification.includes(newMessageRecieved)) {
+          setNotification([newMessageRecieved, ...notification]);
+          setFetchAgain(!fetchAgain);
+        }
       } else {
         setMessages([...messages, newMessageRecieved]);
       }
     });
   });
-  
+
   const typingHandler = (e) => {
     setNewMessage(e.target.value);
 
@@ -160,37 +162,44 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }, timerLength);
   };
 
-
   return (
     <>
       {selectedChat ? (
         <>
           <Text
             fontSize={{ base: "28px", md: "30px" }}
-            pb={3}
-            px={2}
+            py={2}
+            px={4}
             w="100%"
             display={"flex"}
             justifyContent={{ base: "space-between" }}
             alignItems={"center"}
             color={"white"}
           >
-            <IconButton
-              bg={"#403f3e"}
+            <IconButton 
+              bg={"#202C33"}
+              _hover={"#111B21"}
               color={"white"}
-              display={{ base: "flex", md: "none" }}
+              display={{ base: "flex", md: "none", base: {mr: "5px"} }}
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
             />
             {!selectedChat.isGroupChat ? (
-              <>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  alignItems: "center",
+                }}
+              >
                 {
-                  <Text fontSize={{ base: "20px", md: "30px" }}>
+                  <Text fontSize={{ base: "15px", md: "25px" }}>
                     {getSender(user, selectedChat.users)}
                   </Text>
                 }
                 <ProfileModal user={getSenderFull(user, selectedChat.users)} />
-              </>
+              </div>
             ) : (
               <>
                 <Text fontSize={{ base: "20px", md: "30px" }}>
@@ -207,7 +216,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           <Box
             display={"flex"}
             flexDir={"column"}
-            bg={"#383631"}
+            bgImage="url('https://wallpapercave.com/wp/wp6988787.png')"
             justifyContent={"flex-end"}
             p={3}
             w={"100%"}
@@ -240,9 +249,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
               <Input
                 textColor={"white"}
+                width={"98%"}
                 placeholder="Enter a message..."
                 variant={"filled"}
-                bg={"#474540"}
+                bg={"#2A3942"}
                 onChange={typingHandler}
                 value={newMessage}
               />
@@ -256,8 +266,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           justifyContent={"center"}
           h="100%"
         >
-          <Text fontSize="3xl" pb={3} textColor={"white"}>
-            Click on the user to start chatting
+          <Text
+            fontSize="3xl"
+            pb={3}
+            textColor={"white"}
+            display={"flex"}
+            flexDirection={"column"}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            <RiChatSmile3Line size={70} color="gray" />
+            Sayheychat for desktop
           </Text>
         </Box>
       )}

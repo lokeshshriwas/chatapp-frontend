@@ -9,7 +9,7 @@ const Chatpage = () => {
   const [fetchAgain, setFetchAgain] = useState(false)
 
   return (
-    <div className="bg-[url('https://cdn2.f-cdn.com/contestentries/2046262/58571795/61f00c583e000_thumb900.jpg')]" style={{width:"100%"}}>
+    <div style={{width:"100%", backgroundColor: "#0d1317"}}>
       {user && <SideDrawer/>}
       <Box className='flex justify-between w-screen h-[93vh] p-3'>
         {user && <MyChats fetchAgain={fetchAgain} />}
